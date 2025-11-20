@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>saas - Top-Tier Software Solutions for Your Business</title>
+    <meta name="description" content="saas offers real-time, top-class software solutions designed to elevate your business operations. Experience unparalleled performance and innovation.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN (JIT mode) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Preconnect for Pollinations AI Images -->
+    <link rel="preconnect" href="https://image.pollinations.ai">
+
+    <style>
+        :root {
+            --color-primary-base: #6366F1; /* Indigo 500 */
+            --color-accent-base: #EC4899; /* Pink 500 */
+            --color-darkblue-base: #1A202C; /* Gray 900 equivalent */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-darkblue-base);
+            color: #E2E8F0; /* Gray 200 */
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            color: #FFFFFF;
+        }
+
+        /* Glassmorphism effect */
+        .glassmorphism {
+            background-color: rgba(30, 41, 59, 0.4); /* Dark blue-gray with transparency */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            border-radius: 1rem; /* Consistent rounded corners */
+        }
+
+        /* Custom scrollbar for aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+            background-color: #2D3748; /* gray-800 */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--color-primary-base);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: var(--color-darkblue-base);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+    </style>
+    <!-- Tailwind JIT configuration. Make sure this is *after* the Tailwind CDN script. -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            DEFAULT: 'var(--color-primary-base)', // Indigo 500
+                            light: '#818CF8',  // Indigo 400
+                            dark: '#4F46E5',   // Indigo 600
+                        },
+                        accent: {
+                            DEFAULT: 'var(--color-accent-base)', // Pink 500
+                            light: '#F472B6',  // Pink 400
+                            dark: '#DB2777',   // Pink 600
+                        },
+                        darkblue: 'var(--color-darkblue-base)', // Specific dark blue for backgrounds
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-darkblue text-gray-200 overflow-x-hidden">
+
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 py-4 glassmorphism bg-darkblue/40">
+        <nav class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-3xl font-poppins font-bold text-primary-light flex items-center animate-fade-in">
+                <i class="fas fa-cube mr-2 text-accent"></i> saas
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-200 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex space-x-8 text-lg font-medium animate-fade-in delay-200">
+                <li><a href="#features" class="hover:text-primary transition duration-300">Features</a></li>
+                <li><a href="#about" class="hover:text-primary transition duration-300">About Us</a></li>
+                <li><a href="#testimonials" class="hover:text-primary transition duration-300">Testimonials</a></li>
+                <li><a href="#pricing" class="hover:text-primary transition duration-300">Pricing</a></li>
+                <li><a href="#contact" class="hover:text-primary transition duration-300">Contact</a></li>
+            </ul>
+
+            <!-- CTA Button - Desktop -->
+            <div class="hidden md:block animate-fade-in delay-300">
+                <a href="#contact" class="bg-gradient-to-r from-primary to-accent-dark text-white px-6 py-3 rounded-full font-bold hover:scale-105 transition duration-300 shadow-lg">Get Started <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-darkblue/90 backdrop-blur-lg flex flex-col items-center justify-center space-y-8 text-2xl transition-transform duration-300 transform -translate-x-full">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 text-gray-200 focus:outline-none">
+                <i class="fas fa-times text-3xl"></i>
+            </button>
+            <ul class="flex flex-col items-center space-y-6">
+                <li><a href="#features" class="text-gray-200 hover:text-primary transition duration-300 mobile-nav-link">Features</a></li>
+                <li><a href="#about" class="text-gray-200 hover:text-primary transition duration-300 mobile-nav-link">About Us</a></li>
+                <li><a href="#testimonials" class="text-gray-200 hover:text-primary transition duration-300 mobile-nav-link">Testimonials</a></li>
+                <li><a href="#pricing" class="text-gray-200 hover:text-primary transition duration-300 mobile-nav-link">Pricing</a></li>
+                <li><a href="#contact" class="text-gray-200 hover:text-primary transition duration-300 mobile-nav-link">Contact</a></li>
+            </ul>
+            <a href="#contact" class="bg-gradient-to-r from-primary to-accent text-white px-8 py-4 rounded-full font-bold text-xl hover:scale-105 transition duration-300 shadow-lg mobile-nav-link">Get Started Today <i class="fas fa-arrow-right ml-2"></i></a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative h-screen flex items-center justify-center text-center overflow-hidden pt-16">
+            <img src="https://image.pollinations.ai/prompt/futuristic%20digital%20network%20abstract%20blue%20purple%20glow?width=1920&height=1080&nologo=true"
+                 alt="Futuristic digital network background"
+                 class="absolute inset-0 w-full h-full object-cover z-0"
+                 decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-br from-darkblue/70 to-purple-900/70 z-10"></div>
+            
+            <div class="relative z-20 max-w-4xl mx-auto px-6">
+                <h1 class="text-5xl md:text-7xl font-poppins font-extrabold text-white leading-tight mb-6 animate-fade-in-up">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-light to-accent">Elevate Your Business</span> with Top-Tier SaaS Solutions
+                </h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto animate-fade-in-up delay-200">
+                    Experience real-time performance, unparalleled reliability, and cutting-edge features designed to empower your operations and drive growth.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in-up delay-400">
+                    <a href="#features" class="bg-gradient-to-r from-primary to-accent text-white px-8 py-4 rounded-full text-xl font-bold hover:scale-105 transition duration-300 shadow-lg flex items-center justify-center">
+                        Explore Features <i class="fas fa-chevron-down ml-3"></i>
+                    </a>
+                    <a href="#contact" class="bg-white text-darkblue px-8 py-4 rounded-full text-xl font-bold hover:scale-105 transition duration-300 shadow-lg flex items-center justify-center">
+                        Request a Demo <i class="fas fa-play-circle ml-3"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20 md:py-24 bg-gray-900 relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-30 blur-3xl rounded-full z-0"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <h2 class="text-4xl md:text-5xl font-poppins font-bold text-center mb-16 text-white leading-tight">
+                    Powering Your Success with <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Intelligent Solutions</span>
+                </h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Feature 1 -->
+                    <div class="glassmorphism p-8 rounded-xl text-center hover:scale-105 transition duration-300 ease-in-out animate-fade-in-up delay-100">
+                        <img src="https://image.pollinations.ai/prompt/secure%20data%20network%20icon%20abstract?width=120&height=120&nologo=true" 
+                             alt="Secure Data Infrastructure" 
+                             class="w-24 h-24 mx-auto mb-6 opacity-80"
+                             loading="lazy" decoding="async">
+                        <h3 class="text-2xl font-poppins font-semibold mb-4 text-primary-light">Robust Security</h3>
+                        <p class="text-gray-300">
+                            Your data is our top priority. We implement industry-leading encryption and robust security protocols to ensure your information is always protected.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="glassmorphism p-8 rounded-xl text-center hover:scale-105 transition duration-300 ease-in-out animate-fade-in-up delay-200">
+                        <img src="https://image.pollinations.ai/prompt/realtime%20dashboard%20holographic%20ui?width=120&height=120&nologo=true" 
+                             alt="Real-time Analytics Dashboard" 
+                             class="w-24 h-24 mx-auto mb-6 opacity-80"
+                             loading="lazy" decoding="async">
+                        <h3 class="text-2xl font-poppins font-semibold mb-4 text-primary-light">Real-time Insights</h3>
+                        <p class="text-gray-300">
+                            Access critical data and analytics in real-time, enabling swift decision-making and proactive strategy adjustments for optimal performance.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="glassmorphism p-8 rounded-xl text-center hover:scale-105 transition duration-300 ease-in-out animate-fade-in-up delay-300">
+                        <img src="https://image.pollinations.ai/prompt/seamless%20integration%20api%20software%20abstract?width=120&height=120&nologo=true" 
+                             alt="Seamless API Integration" 
+                             class="w-24 h-24 mx-auto mb-6 opacity-80"
+                             loading="lazy" decoding="async">
+                        <h3 class="text-2xl font-poppins font-semibold mb-4 text-primary-light">Seamless Integration</h3>
+                        <p class="text-gray-300">
+                            Our platform integrates effortlessly with your existing tools, creating a unified ecosystem that streamlines workflows and enhances productivity.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="glassmorphism p-8 rounded-xl text-center hover:scale-105 transition duration-300 ease-in-out animate-fade-in-up delay-400">
+                        <img src="https://image.pollinations.ai/prompt/scalable%20cloud%20infrastructure%20icon%20abstract?width=120&height=120&nologo=true" 
+                             alt="Scalable Cloud Infrastructure" 
+                             class="w-24 h-24 mx-auto mb-6 opacity-80"
+                             loading="lazy" decoding="async">
+                        <h3 class="text-2xl font-poppins font-semibold mb-4 text-primary-light">Scalable Performance</h3>
+                        <p class="text-gray-300">
+                            Built on a robust and scalable architecture, our solutions grow with your business, ensuring consistent performance no matter the demand.
+                        </p>
+                    </div>
+
+                    <!-- Feature 5 -->
+                    <div class="glassmorphism p-8 rounded-xl text-center hover:scale-105 transition duration-300 ease-in-out animate-fade-in-up delay-500">
+                        <img src="https://image.pollinations.ai/prompt/intuitive%20user%20interface%20ux%20design%20abstract?width=120&height=120&nologo=true" 
+                             alt="Intuitive User Interface" 
+                             class="w-24 h-24 mx-auto mb-6 opacity-80"
+                             loading="lazy" decoding="async">
+                        <h3 class="text-2xl font-poppins font-semibold mb-4 text-primary-light">Intuitive UI/UX</h3>
+                        <p class="text-gray-300">
+                            Designed with the user in mind, our interface is clean, intuitive, and easy to navigate, minimizing learning curves and maximizing efficiency.
+                        </p>
+                    </div>
+
+                    <!-- Feature 6 -->
+                    <div class="glassmorphism p-8 rounded-xl text-center hover:scale-105 transition duration-300 ease-in-out animate-fade-in-up delay-600">
+                        <img src="https://image.pollinations.ai/prompt/24%2F7%20customer%20support%20abstract%20icon?width=120&height=120&nologo=true" 
+                             alt="24/7 Customer Support" 
+                             class="w-24 h-24 mx-auto mb-6 opacity-80"
+                             loading="lazy" decoding="async">
+                        <h3 class="text-2xl font-poppins font-semibold mb-4 text-primary-light">Dedicated Support</h3>
+                        <p class="text-gray-300">
+                            Our expert support team is available 24/7 to assist you, ensuring smooth operations and quick resolutions to any challenges.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20 md:py-24 bg-darkblue relative">
+            <div class="absolute inset-0 bg-gradient-to-tl from-indigo-900/10 to-pink-900/10 opacity-30 blur-3xl rounded-full z-0"></div>
+            <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center relative z-10">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12 animate-fade-in-up delay-100">
+                    <img src="https://image.pollinations.ai/prompt/innovative%20tech%20team%20collaborating%20futuristic%20office?width=800&height=500&nologo=true"
+                         alt="Innovative tech team collaborating"
+                         class="rounded-xl shadow-2xl glassmorphism p-4"
+                         loading="lazy" decoding="async">
+                </div>
+                <div class="lg:w-1/2 text-center lg:text-left animate-fade-in-up delay-200">
+                    <h2 class="text-4xl md:text-5xl font-poppins font-bold mb-6 text-white leading-tight">
+                        About <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">saas</span>: Your Partner in Digital Transformation
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6">
+                        At saas, we believe in the power of cutting-edge technology to redefine possibilities. We are a team of passionate innovators dedicated to crafting software solutions that are not just functional, but transformative. Our commitment to excellence, real-time performance, and a user-centric approach sets us apart.
+                    </p>
+                    <p class="text-lg text-gray-300 mb-8">
+                        We don't just build software; we engineer experiences. From robust enterprise platforms to nimble productivity tools, our solutions are designed with scalability, security, and your success at their core. Partner with saas and embark on a journey of efficiency, innovation, and unparalleled growth.
+                    </p>
+                    <a href="#contact" class="bg-gradient-to-r from-primary to-accent text-white px-8 py-4 rounded-full text-lg font-bold hover:scale-105 transition duration-300 shadow-lg inline-flex items-center">
+                        Join Our Journey <i class="fas fa-rocket ml-3"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 md:py-24 bg-gray-900 relative">
+            <div class="absolute inset-0 bg-gradient-to-tr from-purple-900/10 to-indigo-900/10 opacity-30 blur-3xl rounded-full z-0"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <h2 class="text-4xl md:text-5xl font-poppins font-bold text-center mb-16 text-white leading-tight">
+                    What Our <span class="bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary">Clients Say</span>
+                </h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Testimonial 1 -->
+                    <div class="glassmorphism p-8 rounded-xl flex flex-col items-center text-center shadow-lg animate-fade-in-up delay-100">
+                        <img src="https://image.pollinations.ai/prompt/professional%20portrait%20woman%20smiling%20business?width=100&height=100&nologo=true" 
+                             alt="Client Avatar Sarah Chen" 
+                             class="w-24 h-24 rounded-full mb-6 border-4 border-primary-light"
+                             loading="lazy" decoding="async">
+                        <p class="text-lg text-gray-300 italic mb-6">
+                            "saas has transformed how we manage our projects. The real-time collaboration features are incredibly powerful, and the interface is a joy to use. Truly top-class!"
+                        </p>
+                        <p class="font-poppins font-semibold text-primary-light text-xl">Sarah Chen</p>
+                        <p class="text-gray-400">CEO, InnovateTech</p>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="glassmorphism p-8 rounded-xl flex flex-col items-center text-center shadow-lg animate-fade-in-up delay-200">
+                        <img src="https://image.pollinations.ai/prompt/professional%20portrait%20man%20smiling%20business?width=100&height=100&nologo=true" 
+                             alt="Client Avatar Michael Lee" 
+                             class="w-24 h-24 rounded-full mb-6 border-4 border-accent-light"
+                             loading="lazy" decoding="async">
+                        <p class="text-lg text-gray-300 italic mb-6">
+                            "The scalability of saas's platform is unmatched. As our company grew, their solution adapted seamlessly without a hitch. Exceptional performance and reliability."
+                        </p>
+                        <p class="font-poppins font-semibold text-primary-light text-xl">Michael Lee</p>
+                        <p class="text-gray-400">CTO, Global Dynamics</p>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="glassmorphism p-8 rounded-xl flex flex-col items-center text-center shadow-lg animate-fade-in-up delay-300">
+                        <img src="https://image.pollinations.ai/prompt/professional%20portrait%20woman%20glasses%20business?width=100&height=100&nologo=true" 
+                             alt="Client Avatar Jessica Kim" 
+                             class="w-24 h-24 rounded-full mb-6 border-4 border-primary-light"
+                             loading="lazy" decoding="async">
+                        <p class="text-lg text-gray-300 italic mb-6">
+                            "Customer support from saas is exemplary. They're always quick to respond and incredibly helpful. It's clear they genuinely care about their users' success."
+                        </p>
+                        <p class="font-poppins font-semibold text-primary-light text-xl">Jessica Kim</p>
+                        <p class="text-gray-400">Operations Director, Apex Corp</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-20 md:py-24 bg-darkblue relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/10 to-pink-900/10 opacity-30 blur-3xl rounded-full z-0"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <h2 class="text-4xl md:text-5xl font-poppins font-bold text-center mb-16 text-white leading-tight">
+                    Flexible Pricing for <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Every Business</span>
+                </h2>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Basic Plan -->
+                    <div class="glassmorphism p-8 rounded-xl flex flex-col text-center shadow-lg hover:scale-105 transition duration-300 animate-fade-in-up delay-100">
+                        <h3 class="text-3xl font-poppins font-bold mb-4 text-primary-light">Starter</h3>
+                        <p class="text-gray-400 text-lg mb-6">Ideal for small teams & startups</p>
+                        <div class="mb-8">
+                            <span class="text-5xl font-poppins font-extrabold text-white">$29</span>
+                            <span class="text-xl text-gray-400">/month</span>
+                        </div>
+                        <ul class="text-left text-gray-300 space-y-3 mb-10 flex-grow">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-3"></i> 5 User Accounts</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-3"></i> 10GB Cloud Storage</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-3"></i> Basic Analytics</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-3"></i> Email Support</li>
+                            <li class="flex items-center"><i class="fas fa-times-circle text-gray-500 mr-3"></i> No API Access</li>
+                        </ul>
+                        <a href="#contact" class="bg-gradient-to-r from-primary to-accent text-white px-8 py-4 rounded-full text-lg font-bold hover:scale-105 transition duration-300 shadow-lg mt-auto">Choose Starter</a>
+                    </div>
+
+                    <!-- Pro Plan (Recommended) -->
+                    <div class="glassmorphism p-8 rounded-xl flex flex-col text-center shadow-lg border-2 border-accent transform scale-105 hover:scale-110 transition duration-300 relative animate-fade-in-up delay-200">
+                        <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-white text-sm font-bold px-4 py-1 rounded-full shadow-md rotate-3">Popular</span>
+                        <h3 class="text-3xl font-poppins font-bold mb-4 text-accent">Professional</h3>
+                        <p class="text-gray-400 text-lg mb-6">Perfect for growing businesses</p>
+                        <div class="mb-8">
+                            <span class="text-5xl font-poppins font-extrabold text-white">$79</span>
+                            <span class="text-xl text-gray-400">/month</span>
+                        </div>
+                        <ul class="text-left text-gray-300 space-y-3 mb-10 flex-grow">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-3"></i> 25 User Accounts</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-3"></i> 100GB Cloud Storage</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-3"></i> Advanced Analytics</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-3"></i> Priority Email & Chat Support</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-3"></i> Full API Access</li>
+                        </ul>
+                        <a href="#contact" class="bg-gradient-to-r from-accent to-primary text-white px-8 py-4 rounded-full text-lg font-bold hover:scale-105 transition duration-300 shadow-lg mt-auto">Choose Professional</a>
+                    </div>
+
+                    <!-- Enterprise Plan -->
+                    <div class="glassmorphism p-8 rounded-xl flex flex-col text-center shadow-lg hover:scale-105 transition duration-300 animate-fade-in-up delay-300">
+                        <h3 class="text-3xl font-poppins font-bold mb-4 text-primary-light">Enterprise</h3>
+                        <p class="text-gray-400 text-lg mb-6">Tailored for large organizations</p>
+                        <div class="mb-8">
+                            <span class="text-5xl font-poppins font-extrabold text-white">Custom</span>
+                            <span class="text-xl text-gray-400">/quote</span>
+                        </div>
+                        <ul class="text-left text-gray-300 space-y-3 mb-10 flex-grow">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-3"></i> Unlimited User Accounts</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-3"></i> Custom Storage</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-3"></i> Dedicated Analytics & Reports</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-3"></i> 24/7 Phone & Dedicated Support</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-accent mr-3"></i> Custom Integrations</li>
+                        </ul>
+                        <a href="#contact" class="bg-gradient-to-r from-primary to-accent text-white px-8 py-4 rounded-full text-lg font-bold hover:scale-105 transition duration-300 shadow-lg mt-auto">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="contact" class="py-20 md:py-24 bg-gray-900 relative">
+            <div class="absolute inset-0 bg-gradient-to-tl from-accent/10 to-primary/10 opacity-30 blur-3xl rounded-full z-0"></div>
+            <div class="container mx-auto px-6 relative z-10 text-center animate-fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-poppins font-bold mb-8 text-white leading-tight">
+                    Ready to <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Transform Your Business?</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
+                    Connect with our experts today to discuss your unique needs and discover how saas can deliver unparalleled software solutions.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#" class="bg-gradient-to-r from-primary to-accent text-white px-8 py-4 rounded-full text-xl font-bold hover:scale-105 transition duration-300 shadow-lg flex items-center justify-center">
+                        Request a Free Consultation <i class="fas fa-envelope-open-text ml-3"></i>
+                    </a>
+                    <a href="tel:+1-555-123-4567" class="bg-white text-darkblue px-8 py-4 rounded-full text-xl font-bold hover:scale-105 transition duration-300 shadow-lg flex items-center justify-center">
+                        Call Us Today <i class="fas fa-phone-alt ml-3"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-darkblue py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+            <div class="mb-8">
+                <a href="#" class="text-3xl font-poppins font-bold text-primary-light flex items-center justify-center">
+                    <i class="fas fa-cube mr-2 text-accent"></i> saas
+                </a>
+            </div>
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-8 text-lg font-medium">
+                <a href="#features" class="hover:text-primary transition duration-300">Features</a>
+                <a href="#about" class="hover:text-primary transition duration-300">About</a>
+                <a href="#pricing" class="hover:text-primary transition duration-300">Pricing</a>
+                <a href="#testimonials" class="hover:text-primary transition duration-300">Testimonials</a>
+                <a href="#contact" class="hover:text-primary transition duration-300">Contact</a>
+                <a href="#" class="hover:text-primary transition duration-300">Privacy Policy</a>
+                <a href="#" class="hover:text-primary transition duration-300">Terms of Service</a>
+            </div>
+            <div class="flex justify-center space-x-6 mb-8 text-2xl">
+                <a href="#" class="hover:text-primary transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-primary transition duration-300"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-primary transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="hover:text-primary transition duration-300"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; <span id="current-year"></span> saas. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript at the end of the body -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => { // Allow display change to take effect before transition
+                    mobileMenu.classList.remove('-translate-x-full');
+                    mobileMenu.classList.add('translate-x-0');
+                }, 10);
+            });
+        }
+
+        if (closeMobileMenuButton) {
+            closeMobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('-translate-x-full');
+                setTimeout(() => { // Hide after transition
+                    mobileMenu.classList.add('hidden');
+                }, 300); // Match transition duration
+            });
+        }
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Close menu when a link is clicked
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('-translate-x-full');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+            });
+        });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+
+    <!-- Analytics Injection (CRITICAL) -->
+    <script src="https://alphasite.saadsafi.dev/tracker.js" async></script>
+</body>
+</html>
